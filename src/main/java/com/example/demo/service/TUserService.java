@@ -5,6 +5,8 @@ import com.example.demo.generator.TUserDao;
 import com.example.demo.generator.TUserExample;
 import com.example.demo.generator.TUserExample.Criteria;
 import com.example.demo.generator.TUserMapper;
+import com.example.demo.repository.TDept;
+import com.example.demo.repository.TDeptRepository;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.stereotype.Service;
 
@@ -19,6 +21,8 @@ public class TUserService {
     @Resource
     TUserDao tUserDao;
 
+    @Resource
+   private TDeptRepository tDeptRepository;
 
     public List<TUser> getUserId() {
         TUserExample tUserExample = new TUserExample();
@@ -29,7 +33,9 @@ public class TUserService {
     }
 
 
-
+    public List<TDept> getDeptIdForJpa() {
+       return tDeptRepository.findAll();
+    }
 
 
     public void insert(TUser tUser) {

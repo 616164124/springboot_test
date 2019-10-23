@@ -3,7 +3,9 @@ package com.example.demo.controle;
 
 import com.example.demo.generator.TUser;
 import com.example.demo.generator.TUserExample;
+import com.example.demo.repository.TDept;
 import com.example.demo.service.TUserService;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
@@ -23,6 +25,11 @@ public class TUserController {
     @RequestMapping("/tuser")
     public List<TUser> getTUerid() {
         return tUserService.getUserId();
+    }
+
+    @RequestMapping("/DeptIdJpa/{id}")
+    public List<TDept> getTUserForJpa(){
+        return tUserService.getDeptIdForJpa();
     }
 
     @RequestMapping("/insertUser")

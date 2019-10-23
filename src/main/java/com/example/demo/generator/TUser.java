@@ -1,5 +1,7 @@
 package com.example.demo.generator;
 
+import javax.persistence.Entity;
+import javax.persistence.Table;
 import java.io.Serializable;
 import java.util.Date;
 
@@ -7,6 +9,8 @@ import java.util.Date;
  * t_user
  * @author 
  */
+
+
 public class TUser implements Serializable {
     /**
      * 用户ID

@@ -8,8 +8,10 @@ spring:
     username: root
     password: 123456
     driver-class-name: com.mysql.cj.jdbc.Driver
-
+  main:
+   allow-bean-definition-overriding: true
 mybatis:
   typeAliasesPackage: com.example.demo.generator
   mapperLocations: classpath:mapper/*.xml
   #configLocation: classpath:/mybatis-config.xml
+
