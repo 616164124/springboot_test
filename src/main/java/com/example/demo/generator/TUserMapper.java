@@ -21,5 +21,8 @@ public interface TUserMapper {
 
     TUser selectById(long id);
 
-    List<TUser> selectByExample(TUserExample.Criteria criteria);
+    List<TUser> selectByExample(TUserExample criteria);
+
+    List<TUser>  selectAll();
+
 }

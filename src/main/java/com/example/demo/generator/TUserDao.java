@@ -29,4 +29,7 @@ public interface TUserDao {
     int updateByPrimaryKeySelective(TUser record);
 
     int updateByPrimaryKey(TUser record);
+
+
+    List<TUser>  selectAll();
 }

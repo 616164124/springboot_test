@@ -227,6 +227,11 @@
       <include refid="Example_Where_Clause" />
     </if>
   </select>
+
+  <select id="selectAll" parameterType="com.example.demo.generator.TUserExample" resultMap="BaseResultMap">
+    select * from  t_user
+  </select>
+
   <update id="updateByExampleSelective" parameterType="map">
     update t_user
     <set>

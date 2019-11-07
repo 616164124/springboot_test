@@ -7,6 +7,8 @@ import com.example.demo.generator.TUserExample.Criteria;
 import com.example.demo.generator.TUserMapper;
 import com.example.demo.repository.TDept;
 import com.example.demo.repository.TDeptRepository;
+import com.github.pagehelper.PageHelper;
+import com.github.pagehelper.PageInfo;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.stereotype.Service;
 
@@ -20,9 +22,10 @@ public class TUserService {
     TUserMapper tUserMapper;
     @Resource
     TUserDao tUserDao;
-
+    TUserExample tUserExample = new TUserExample();
+    Criteria criteria = tUserExample.createCriteria();
     @Resource
-   private TDeptRepository tDeptRepository;
+    private TDeptRepository tDeptRepository;
 
     public List<TUser> getUserId() {
         TUserExample tUserExample = new TUserExample();
@@ -32,9 +35,27 @@ public class TUserService {
         return list;
     }
 
+    public List<TUser> getUser() {
+
+        criteria.andAvatarIsNotNull();
+
+        List<TUser> tUserList = tUserDao.selectByExample(tUserExample);
+
+        PageHelper.startPage(3, 1);
+
+        /*PageHelper.startPage(Integer.valueOf(pageNum).intValue(),Integer.valueOf(pageSize).intValue());*/
+        PageInfo<TUser> pageInfo = new PageInfo<TUser>(tUserList);
+        List<TUser> listm = null;
+        listm = pageInfo.getList();
+
+
+        return listm;
+
+    }
+
 
     public List<TDept> getDeptIdForJpa() {
-       return tDeptRepository.findAll();
+        return tDeptRepository.findAll();
     }
 
 

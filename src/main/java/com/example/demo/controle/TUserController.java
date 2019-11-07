@@ -5,7 +5,6 @@ import com.example.demo.generator.TUser;
 import com.example.demo.generator.TUserExample;
 import com.example.demo.repository.TDept;
 import com.example.demo.service.TUserService;
-import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
@@ -28,7 +27,7 @@ public class TUserController {
     }
 
     @RequestMapping("/DeptIdJpa/{id}")
-    public List<TDept> getTUserForJpa(){
+    public List<TDept> getTUserForJpa() {
         return tUserService.getDeptIdForJpa();
     }
 
@@ -43,4 +42,21 @@ public class TUserController {
     }
 
 
+    @RequestMapping("/user/all")
+    public List<TUser> getTUserAll() {
+/*
+        System.out.println("+++++ "+pageNum+"    "+pageSize);
+        if(pageNum == null || pageSize==null){
+            pageNum =1;
+            pageSize=1;
+        }*/
+
+
+        /*PageHelper.startPage(Integer.valueOf(pageNum).intValue(),Integer.valueOf(pageSize).intValue());*/
+        /*PageInfo<TUser> pageInfo =new PageInfo<TUser>(tUserList);*/
+
+
+
+        return tUserService.getUser();
+    }
 }
