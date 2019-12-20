@@ -3,6 +3,8 @@ package com.example.demo.service;
 import com.example.demo.repository.TDept;
 import com.example.demo.repository.TDeptRepository;
 import lombok.extern.slf4j.Slf4j;
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.PageRequest;
 import org.springframework.stereotype.Service;
 
 import javax.annotation.Resource;
@@ -10,11 +12,22 @@ import java.util.List;
 
 @Slf4j
 @Service
-public class TDpetService  {
+public class TDpetService {
     @Resource
-    TDeptRepository tDeptRepository;
+    private TDeptRepository tDeptRepository;
 
-    public List<TDept> findAll() {
-        return tDeptRepository.findAll() ;
+
+    public Page<TDept> findAll(PageRequest pageRequest) {
+
+        return  tDeptRepository.findAll(pageRequest.first());
     }
+
+
+    public List<TDept> findTDept(){
+
+        return tDeptRepository.findAll();
+
+    }
+
+
 }

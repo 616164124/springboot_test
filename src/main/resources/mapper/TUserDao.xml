@@ -17,7 +17,24 @@
     <result column="THEME" jdbcType="VARCHAR" property="theme" />
     <result column="AVATAR" jdbcType="VARCHAR" property="avatar" />
     <result column="DESCRIPTION" jdbcType="VARCHAR" property="description" />
+    <result column="DEPT_ID" jdbcType="BIGINT" property="deptId"/>
+
+    <!--<association property="TDept" javaType="com.example.demo.repository.TDept">
+      <id property="deptId" column="dept_id"/>
+      <result column="DEPT_ID" property="deptid"/>
+      <result column="DEPT_NAME" property="deptname"/>
+    </association>-->
+
   </resultMap>
+  
+  <select id="select" parameterType="java.lang.String" resultMap="BaseResultMap">
+
+SELECT a.`USERNAME`,b.`DEPT_ID`,b.`DEPT_NAME` FROM  java.`t_user` a ,java.`t_dept` b WHERE  a.`DEPT_ID`=b.`DEPT_ID`;
+
+
+  </select>
+  
+  
   <sql id="Example_Where_Clause">
     <where>
       <foreach collection="oredCriteria" item="criteria" separator="or">
@@ -227,6 +244,11 @@
       <include refid="Example_Where_Clause" />
     </if>
   </select>
+
+  <select id="selectAll" parameterType="com.example.demo.generator.TUserExample" resultMap="BaseResultMap">
+    select * from  t_user
+  </select>
+
   <update id="updateByExampleSelective" parameterType="map">
     update t_user
     <set>

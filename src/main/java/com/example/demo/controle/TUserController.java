@@ -2,6 +2,7 @@ package com.example.demo.controle;
 
 
 import com.example.demo.generator.TUser;
+import com.example.demo.generator.TUserDept;
 import com.example.demo.generator.TUserExample;
 import com.example.demo.repository.TDept;
 import com.example.demo.service.TUserService;
@@ -16,7 +17,6 @@ import java.util.List;
 @RestController
 public class TUserController {
 
-
     @Resource
     TUserExample tUserExample;
     @Resource
@@ -27,8 +27,15 @@ public class TUserController {
         return tUserService.getUserId();
     }
 
+    @RequestMapping("/TUserDept")
+    public List<TUserDept> getTUserDept() {
+
+        return tUserService.selectDept();
+    }
+
+
     @RequestMapping("/DeptIdJpa/{id}")
-    public List<TDept> getTUserForJpa(){
+    public List<TDept> getTUserForJpa(@PathVariable long id) {
         return tUserService.getDeptIdForJpa();
     }
 
@@ -42,5 +49,34 @@ public class TUserController {
         return tUserService.selectByPrimaryKey(1l);
     }
 
+
+    @RequestMapping("/user/all")
+    public List<TUser> getTUserAll() {
+
+/*
+        System.out.println("+++++ "+pageNum+"    "+pageSize);
+        if(pageNum == null || pageSize==null){
+            pageNum =1;
+            pageSize=1;
+        }*/
+
+
+        /*PageHelper.startPage(Integer.valueOf(pageNum).intValue(),Integer.valueOf(pageSize).intValue());*/
+        /*PageInfo<TUser> pageInfo =new PageInfo<TUser>(tUserList);*/
+
+        tUserService.findAllTUser();
+
+
+
+
+        return tUserService.findAllTUser();
+    }
+
+
+    @RequestMapping("/tuserLimit")
+    public List<TUser> findTUserLimit(){
+
+        return  tUserService.findTUserLimit();
+    }
 
 }
