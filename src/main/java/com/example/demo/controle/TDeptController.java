@@ -22,20 +22,24 @@ public class TDeptController {
     @ResponseBody
     public Page<TDept> findDept() {
         Sort.Order order = new Sort.Order(Sort.Direction.DESC, "deptId");
-        PageRequest request = PageRequest.of(2, 5, Sort.by(order));
-
+        //PageRequest request = PageRequest.of(2, 5, Sort.by(order));
+        PageRequest request = PageRequest.of(2,3);
         Page<TDept> all = tDpetService.findAll(request);
 
         return all;
     }
 
 
+    //采用jap的分页方式
     @RequestMapping("/findDept")
     @ResponseBody
-    public List<TDept> finaDept(){
-
-        return tDpetService.findTDept();
-
+    public Page<TDept> finaDept(){
+        //jpa方式实现
+        //    return tDpetService.findTDept();
+        PageRequest pageRequest;
+        pageRequest = PageRequest.of(1,4);
+        Page<TDept> all = tDpetService.findAll(pageRequest);
+        return all;
     }
 
 

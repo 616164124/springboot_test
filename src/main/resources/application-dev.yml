@@ -13,7 +13,10 @@ spring:
 mybatis:
   typeAliasesPackage: com.example.demo.generator
   mapperLocations: classpath:mapper/*.xml
-  #configLocation: classpath:/mybatis-config.xml
+  configuration:
+    #打印mybatis中的sql
+    log-impl: org.apache.ibatis.logging.stdout.StdOutImpl
 
+  #configLocation: classpath:/mybatis-config.xml
 
 

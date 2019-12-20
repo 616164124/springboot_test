@@ -19,7 +19,7 @@ public class TDpetService {
 
     public Page<TDept> findAll(PageRequest pageRequest) {
 
-        return (Page<TDept>) tDeptRepository.findAll();
+        return  tDeptRepository.findAll(pageRequest.first());
     }
 
 
