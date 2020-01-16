@@ -42,6 +42,25 @@ public class TDeptController {
         return all;
     }
 
+    //jpa条件查询
+    @RequestMapping("/findDeptExample")
+    @ResponseBody
+    public  TDept findDeptExample(){
+
+        List<TDept> tDeptExample = tDpetService.findTDeptExample();
+
+        return null;
+    }
+
+    //jpa 使用jpa方法名来查找 快速查找
+    @ResponseBody
+    @RequestMapping("/findQuick")
+    public List<TDept> findQuick(){
+
+    return tDpetService.QuickQuery();
+
+
+    }
 
 /*
 

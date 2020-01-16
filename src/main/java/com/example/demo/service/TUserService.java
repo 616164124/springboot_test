@@ -70,4 +70,15 @@ public class TUserService {
     tUserExample.setOffset(4l);
     return tUserDao.selectByExample(tUserExample);
   }
+
+  //mybatis
+
+  public List<TUser> findTUserDept(){
+
+
+    return tUserDao.selectForDept();
+  }
+
+
+
 }
