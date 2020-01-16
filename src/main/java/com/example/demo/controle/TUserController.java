@@ -65,11 +65,7 @@ public class TUserController {
         /*PageInfo<TUser> pageInfo =new PageInfo<TUser>(tUserList);*/
 
         tUserService.findAllTUser();
-
-
-
-
-        return tUserService.findAllTUser();
+       return tUserService.findAllTUser();
     }
 
 
@@ -77,6 +73,15 @@ public class TUserController {
     public List<TUser> findTUserLimit(){
 
         return  tUserService.findTUserLimit();
+    }
+    //https://blog.csdn.net/hefenglian/article/details/80699723
+    // mybatis 形式关联查询
+    @RequestMapping("/selectDept")
+    public List<TUser> selectDept(){
+        List<TUser> tUserDept = tUserService.findTUserDept();
+        System.out.println(tUserDept.get(0));
+
+    return tUserDept;
     }
 
 }

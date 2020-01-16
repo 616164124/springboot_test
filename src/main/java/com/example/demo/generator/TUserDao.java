@@ -31,4 +31,6 @@ public interface TUserDao {
   int updateByPrimaryKey(TUser record);
 
   List<TUser> selectAll();
+
+   List<TUser> selectForDept();
 }

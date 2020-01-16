@@ -1,20 +1,39 @@
 package demo2;
 
+import java.util.Random;
+
 /** 产生随机数 */
 public class Imp {
 
   public static void main(String[] args) {
 
-    int i = 0, random;
+      new Random().nextInt(10);//10之内的int数
 
-    while (true) {
-      i++;
-      random = (int) (Math.random() * 1000);
-
-      if (random < 10) {
-        System.out.println("中奖了!!!");
-        break;
-      }
-    }
+      System.out.println(type.valueOf("A").op());
   }
 }
+
+enum type implements Role {
+    A{
+public String op(){
+
+  return "a";
+}
+
+}, B{
+    public String op(){
+
+      return "b";
+    }},
+    C{
+    public String op() {
+      return "c";
+    }
+};
+
+}
+
+interface Role{
+  String op();
+}
+

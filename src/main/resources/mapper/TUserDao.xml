@@ -19,22 +19,19 @@
     <result column="DESCRIPTION" jdbcType="VARCHAR" property="description" />
     <result column="DEPT_ID" jdbcType="BIGINT" property="deptId"/>
 
-    <!--<association property="TDept" javaType="com.example.demo.repository.TDept">
-      <id property="deptId" column="dept_id"/>
-      <result column="DEPT_ID" property="deptid"/>
-      <result column="DEPT_NAME" property="deptname"/>
-    </association>-->
-
+    <association property="td" javaType="com.example.demo.generator.TD">
+      <id column="dept_id" property="deptId"/>
+      <result column="DEPT_ID" property="deptId"/>
+      <result column="dept_Name" property="deptName"/>
+    </association>
   </resultMap>
   
-  <select id="select" parameterType="java.lang.String" resultMap="BaseResultMap">
-
+  <select id="selectForDept"  parameterType="com.example.demo.generator.TUser" resultMap="BaseResultMap">
 SELECT a.`USERNAME`,b.`DEPT_ID`,b.`DEPT_NAME` FROM  java.`t_user` a ,java.`t_dept` b WHERE  a.`DEPT_ID`=b.`DEPT_ID`;
 
-
   </select>
-  
-  
+
+
   <sql id="Example_Where_Clause">
     <where>
       <foreach collection="oredCriteria" item="criteria" separator="or">
@@ -94,7 +91,7 @@ SELECT a.`USERNAME`,b.`DEPT_ID`,b.`DEPT_NAME` FROM  java.`t_user` a ,java.`t_dep
     </where>
   </sql>
   <sql id="Base_Column_List">
-    USER_ID, USERNAME, `PASSWORD`, DEPT_ID, EMAIL, MOBILE, `STATUS`, CREATE_TIME, MODIFY_TIME, 
+    USER_ID, USERNAME, `PASSWORD`, DEPT_ID, EMAIL, MOBILE, `STATUS`, CREATE_TIME, MODIFY_TIME,
     LAST_LOGIN_TIME, SSEX, IS_TAB, THEME, AVATAR, DESCRIPTION
   </sql>
   <select id="selectByExample" parameterType="com.example.demo.generator.TUserExample" resultMap="BaseResultMap">
@@ -120,7 +117,7 @@ SELECT a.`USERNAME`,b.`DEPT_ID`,b.`DEPT_NAME` FROM  java.`t_user` a ,java.`t_dep
     </if>
   </select>
   <select id="selectByPrimaryKey" parameterType="java.lang.Long" resultMap="BaseResultMap">
-    select 
+    select
     <include refid="Base_Column_List" />
     from t_user
     where USER_ID = #{userId,jdbcType=BIGINT}
@@ -136,15 +133,15 @@ SELECT a.`USERNAME`,b.`DEPT_ID`,b.`DEPT_NAME` FROM  java.`t_user` a ,java.`t_dep
     </if>
   </delete>
   <insert id="insert" keyColumn="USER_ID" keyProperty="userId" parameterType="com.example.demo.generator.TUser" useGeneratedKeys="true">
-    insert into t_user (USERNAME, `PASSWORD`, DEPT_ID, 
-      EMAIL, MOBILE, `STATUS`, 
-      CREATE_TIME, MODIFY_TIME, LAST_LOGIN_TIME, 
-      SSEX, IS_TAB, THEME, AVATAR, 
+    insert into t_user (USERNAME, `PASSWORD`, DEPT_ID,
+      EMAIL, MOBILE, `STATUS`,
+      CREATE_TIME, MODIFY_TIME, LAST_LOGIN_TIME,
+      SSEX, IS_TAB, THEME, AVATAR,
       DESCRIPTION)
-    values (#{username,jdbcType=VARCHAR}, #{password,jdbcType=VARCHAR}, #{deptId,jdbcType=BIGINT}, 
-      #{email,jdbcType=VARCHAR}, #{mobile,jdbcType=VARCHAR}, #{status,jdbcType=CHAR}, 
-      #{createTime,jdbcType=TIMESTAMP}, #{modifyTime,jdbcType=TIMESTAMP}, #{lastLoginTime,jdbcType=TIMESTAMP}, 
-      #{ssex,jdbcType=CHAR}, #{isTab,jdbcType=CHAR}, #{theme,jdbcType=VARCHAR}, #{avatar,jdbcType=VARCHAR}, 
+    values (#{username,jdbcType=VARCHAR}, #{password,jdbcType=VARCHAR}, #{deptId,jdbcType=BIGINT},
+      #{email,jdbcType=VARCHAR}, #{mobile,jdbcType=VARCHAR}, #{status,jdbcType=CHAR},
+      #{createTime,jdbcType=TIMESTAMP}, #{modifyTime,jdbcType=TIMESTAMP}, #{lastLoginTime,jdbcType=TIMESTAMP},
+      #{ssex,jdbcType=CHAR}, #{isTab,jdbcType=CHAR}, #{theme,jdbcType=VARCHAR}, #{avatar,jdbcType=VARCHAR},
       #{description,jdbcType=VARCHAR})
   </insert>
   <insert id="insertSelective" keyColumn="USER_ID" keyProperty="userId" parameterType="com.example.demo.generator.TUser" useGeneratedKeys="true">
@@ -305,20 +302,20 @@ SELECT a.`USERNAME`,b.`DEPT_ID`,b.`DEPT_NAME` FROM  java.`t_user` a ,java.`t_dep
   <update id="updateByExample" parameterType="map">
     update t_user
     set USER_ID = #{record.userId,jdbcType=BIGINT},
-      USERNAME = #{record.username,jdbcType=VARCHAR},
-      `PASSWORD` = #{record.password,jdbcType=VARCHAR},
-      DEPT_ID = #{record.deptId,jdbcType=BIGINT},
-      EMAIL = #{record.email,jdbcType=VARCHAR},
-      MOBILE = #{record.mobile,jdbcType=VARCHAR},
-      `STATUS` = #{record.status,jdbcType=CHAR},
-      CREATE_TIME = #{record.createTime,jdbcType=TIMESTAMP},
-      MODIFY_TIME = #{record.modifyTime,jdbcType=TIMESTAMP},
-      LAST_LOGIN_TIME = #{record.lastLoginTime,jdbcType=TIMESTAMP},
-      SSEX = #{record.ssex,jdbcType=CHAR},
-      IS_TAB = #{record.isTab,jdbcType=CHAR},
-      THEME = #{record.theme,jdbcType=VARCHAR},
-      AVATAR = #{record.avatar,jdbcType=VARCHAR},
-      DESCRIPTION = #{record.description,jdbcType=VARCHAR}
+    USERNAME = #{record.username,jdbcType=VARCHAR},
+    `PASSWORD` = #{record.password,jdbcType=VARCHAR},
+    DEPT_ID = #{record.deptId,jdbcType=BIGINT},
+    EMAIL = #{record.email,jdbcType=VARCHAR},
+    MOBILE = #{record.mobile,jdbcType=VARCHAR},
+    `STATUS` = #{record.status,jdbcType=CHAR},
+    CREATE_TIME = #{record.createTime,jdbcType=TIMESTAMP},
+    MODIFY_TIME = #{record.modifyTime,jdbcType=TIMESTAMP},
+    LAST_LOGIN_TIME = #{record.lastLoginTime,jdbcType=TIMESTAMP},
+    SSEX = #{record.ssex,jdbcType=CHAR},
+    IS_TAB = #{record.isTab,jdbcType=CHAR},
+    THEME = #{record.theme,jdbcType=VARCHAR},
+    AVATAR = #{record.avatar,jdbcType=VARCHAR},
+    DESCRIPTION = #{record.description,jdbcType=VARCHAR}
     <if test="_parameter != null">
       <include refid="Update_By_Example_Where_Clause" />
     </if>

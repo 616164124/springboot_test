@@ -1,5 +1,7 @@
 package com.example.demo.generator;
 
+import com.example.demo.repository.TDept;
+
 import javax.persistence.Entity;
 import javax.persistence.Table;
 import java.io.Serializable;
@@ -86,6 +88,20 @@ public class TUser implements Serializable {
      * 描述
      */
     private String description;
+    private TD td;
+
+    public TD getTd() {
+        return td;
+    }
+
+    public void setTd(TD td) {
+        this.td = td;
+    }
+
+    public static long getSerialVersionUID() {
+        return serialVersionUID;
+    }
+
 
     private static final long serialVersionUID = 1L;
 

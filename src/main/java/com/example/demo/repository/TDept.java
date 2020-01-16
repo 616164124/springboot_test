@@ -5,6 +5,7 @@ import lombok.Builder;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 
+import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.Id;
 import javax.persistence.Table;
@@ -16,8 +17,11 @@ public class TDept {
     //使用JPA时,实体类中必须有一个主键@Id,否则无法注册bean
     @Id
     private long deptId;
+    @Column
     private long parentId;
+    @Column
     private String deptName;
+    @Column
     private long orderNum;
     private Date createTime;
     private Date modifyTime;
