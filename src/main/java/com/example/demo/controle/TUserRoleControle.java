@@ -22,12 +22,11 @@ public class TUserRoleControle {
   }
 
   @RequestMapping("/CC") // 请求地址： http://localhost:8081/TUserRole/CC?id=3
-  public void inserTUserRole(@RequestParam String id) {
+  public void inserTUserRole(@RequestParam String id,String name) {
     System.out.println(id);
   }
 
   // https://www.cnblogs.com/xuwujing/p/11184162.html
-
   public void sout() {
     int i = 1 / 0;
     System.out.println("进入 Transactional");
