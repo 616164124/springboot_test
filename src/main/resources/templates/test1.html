@@ -1,12 +1,38 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
-    <title>test1</title>
-
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Title</title>
+    <script src="./js/vue.js"></script>
 </head>
-<body>
-<b>hello </b>
 
+<body>
+<div id="app">
+    <one-k v-for="some in something" v-bind:two="some" v-bind:key="some.id"></one-k>
+</div>
+<script>
+    //组件
+    Vue.component('one-k', {
+        props: ['two'],
+        template: '<li>{{ two.txt }} </li>'
+    })
+
+    //创建Vue实例,得到 ViewModel
+    var vm = new Vue({
+        el: '#app',
+        data: {
+            something: [
+                { id: 0, txt: "小说" },
+                { id: 1, txt: "报纸" },
+                { id: 2, txt: "散文" }
+            ]
+        },
+        methods: {}
+    });
+</script>
 </body>
+
 </html>

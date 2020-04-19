@@ -2,6 +2,7 @@ package demo2;
 
 import java.util.Random;
 
+
 /** 产生随机数 */
 public class Imp {
 

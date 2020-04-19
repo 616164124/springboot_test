@@ -6,15 +6,14 @@ import com.example.demo.generator.TUserDept;
 import com.example.demo.generator.TUserExample;
 import com.example.demo.repository.TDept;
 import com.example.demo.service.TUserService;
-import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
 import javax.annotation.Resource;
 import java.util.List;
 
 
 @RestController
+@CrossOrigin
 public class TUserController {
 
     @Resource
@@ -22,7 +21,7 @@ public class TUserController {
     @Resource
     private TUserService tUserService;
 
-    @RequestMapping("/tuser")
+    @GetMapping("/tuser")
     public List<TUser> getTUerid() {
         return tUserService.getUserId();
     }
