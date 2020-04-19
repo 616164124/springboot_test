@@ -1,6 +1,6 @@
 package com.thread;
 
-public class Threadtest01  {
+public class Threadtest01   {
 
 
 }
