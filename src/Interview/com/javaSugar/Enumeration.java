@@ -19,6 +19,8 @@ enum IntegarTest {
     private IntegarTest(int i){
         this.i=i;
     }
+    //抽象方法
+
     abstract void Tell();
 }
 
@@ -28,43 +30,43 @@ enum Week {
     one {
         @Override
         void Tell() {
-            System.out.println("one");
+            System.out.println("week  one");
         }
     },
     two {
         @Override
         void Tell() {
-            System.out.println("two");
+            System.out.println("week two");
         }
     },
     three {
         @Override
         void Tell() {
-            System.out.println("three");
+            System.out.println("week  three");
         }
     },
     four {
         @Override
         void Tell() {
-            System.out.println("four");
+            System.out.println("week  four");
         }
     },
     five {
         @Override
         void Tell() {
-            System.out.println("five");
+            System.out.println("week  five");
         }
     },
     six {
         @Override
         void Tell() {
-            System.out.println("six");
+            System.out.println("week  six");
         }
     },
     seven {
         @Override
         void Tell() {
-            System.out.println("seven");
+            System.out.println("week  seven");
         }
     };
 
@@ -91,16 +93,19 @@ public class Enumeration {
         int i = 1;
         // 遍历出integarTest中的值,取相应方法中
         for (IntegarTest integarTest : IntegarTest.values()) {
+            System.out.println("integarTest.ordinal()======="+integarTest.ordinal());
             if (integarTest.ordinal() == i) {
-                System.out.println("++++++++++++++++++++");
-                System.out.println(integarTest.name());
+                System.out.println("+++++++if+++++++++++++");
+                System.out.println("integarTest.name()++++++"+integarTest.name());
                 integarTest.Tell();
                 System.out.println("++++++++++++++++++++");
             }
         }
         //采用枚举来判断执行哪个方法
         Week.valueOf(a).Tell();
-        System.out.println("-------------------------");
+        System.out.println(" -----------Week.valueOf(a).Tell();--------------");
+
+       Week.values()[1].Tell();
 
 
     }
