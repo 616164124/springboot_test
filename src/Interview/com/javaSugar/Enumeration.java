@@ -90,6 +90,7 @@ enum Week {
 public class Enumeration {
     public static void main(String[] args) {
         String a = "one";
+        String b = "klfjls";
         int i = 1;
         // 遍历出integarTest中的值,取相应方法中
         for (IntegarTest integarTest : IntegarTest.values()) {
@@ -103,10 +104,17 @@ public class Enumeration {
         }
         //采用枚举来判断执行哪个方法
         Week.valueOf(a).Tell();
+        try{
+            Week.valueOf(b).Tell();
+        }catch (IllegalArgumentException e){
+            System.out.println("b值有问题");
+        }
+
         System.out.println(" -----------Week.valueOf(a).Tell();--------------");
-
-       Week.values()[1].Tell();
-
+        Week.five.Tell();
+        System.out.println("------------------------------------------");
+        Week.values()[1].Tell();
 
     }
+
 }

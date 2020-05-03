@@ -4,6 +4,7 @@ package com.thread;
  * "abcdef" "123456" 两个数组 输出“a1b2c3d4”
  */
 public class T01_00_cas {
+
     // 不使用volatile 时，会造成死锁
     static volatile ReadytoRun t = ReadytoRun.t1;
 
@@ -12,6 +13,9 @@ public class T01_00_cas {
 
         char[] chars = "abcdef".toCharArray();
         char[] chars1 = "123456".toCharArray();
+
+
+
 
 
         new Thread(() -> {
