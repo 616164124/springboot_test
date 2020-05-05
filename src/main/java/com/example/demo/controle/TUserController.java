@@ -13,7 +13,7 @@ import java.util.List;
 
 
 @RestController
-@CrossOrigin
+//@CrossOrigin(origins = "127.0.0.1:8080")
 public class TUserController {
 
     @Resource
@@ -21,6 +21,7 @@ public class TUserController {
     @Resource
     private TUserService tUserService;
 
+    //测试vue
     @GetMapping("/tuser")
     public List<TUser> getTUerid() {
         return tUserService.getUserId();
@@ -45,7 +46,7 @@ public class TUserController {
 
     @RequestMapping("/user")
     public TUser getUser() {
-        return tUserService.selectByPrimaryKey(1l);
+        return tUserService.selectByPrimaryKey(1L);
     }
 
 

@@ -15,8 +15,6 @@ public class T03_ThreadLocal {
             System.out.println(userThreadLocal.get());  // 将userThreadLocal 作为一个key塞入threalocalmap中，而这个key作为弱引用指向 ThreadLocal
         }).start();
 
-
-
         new Thread(()->{
              userThreadLocal.set(new User("hua", 12));
         }).start();
